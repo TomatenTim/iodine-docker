@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  iodine-tunnel:
+    image: tomatentim/iodine
+    container_name: iodine-server
+    environment:
+      IODINE_IP: "10.0.0.1"
+      IODINE_DOMAIN: "iodine.example.com"
+      IODINE_ENABLE_COMPRESSION: "true"
+      IODINE_PASSWORD: "mypassword"
+      IODINE_EXTRA_ARGS: ""  # Add any extra arguments here if needed
+    ports:  
+      - "53:53/udp"
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun
